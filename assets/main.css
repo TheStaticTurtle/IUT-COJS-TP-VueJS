@@ -8,6 +8,7 @@ body {
 
 td {
   border: none !important;
+  color: #FFF;
 }
 img {
   image-rendering: pixelated;

@@ -86,6 +86,10 @@ Vue.component("players", {
         </div>\
 
         <table class="table" style=""> \
+						<tr style="padding:0;"> \
+							<td style="padding:0;" colspan="3"> Hands: </td> \
+							<td style="padding:0;" colspan="3"> Belt: </td> \
+						</tr> \
             <tr> \
           		<td class="p-0 playerinventory" scope="col" v-for="(it,index) in player.slots[2].items" @dragover.prevent @drop="drop(2, index)"> \
 								<div class="h-100" v-if="it != null"> \
