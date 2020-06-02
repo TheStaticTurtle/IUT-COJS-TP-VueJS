@@ -1,0 +1,65 @@
+body {
+  background-image: url('bg.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #FFF;
+}
+
+td {
+  border: none !important;
+}
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+.progress {
+  position: relative;
+}
+
+.progress img {
+  position: absolute;
+  left: calc(55% - 50px); // percentage - .5 x width of image
+}
+
+.progress p {
+  position: absolute;
+  left: calc(55% - 25px); // percentage - .5 x width of image
+  bottom: 16px;
+  margin-top: 8px;
+  color: black;
+}
+
+.playerinventory img {
+  cursor: grab;
+}
+
+.playerinventory_tiny img {
+  cursor: grab;
+}
+
+.playerinventory {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  height:64px;
+  width:64px;
+  background-image: url('inventory.png');
+  background-repeat: repeat;
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.playerinventory_tiny {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  height:32px;
+  width:32px;
+  background-image: url('inventory.png');
+  background-repeat: repeat;
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.playerinventory_no {
+  height:64px;
+  width:64px;
+}
