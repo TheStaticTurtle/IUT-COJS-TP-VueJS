@@ -9,6 +9,8 @@ var itemLimits = [
   {slot:'bag', limit:10, types: [ '*' ]}
 ];
 
+var gameMaster = false;
+
 function countNulls(arr) {
   out = 0;
   arr.forEach((item, i) => {
