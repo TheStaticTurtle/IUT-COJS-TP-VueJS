@@ -37,7 +37,7 @@ Vue.component("players", {
 		</select> \
 
 		<div style="position: absolute; left:calc((100% - (64px * 6)) / 2); right:calc((100% - (64px * 6)) / 2); bottom:0px; ">\
-			<h3> {{ player.name }} </h3>
+			<h3> {{ player.name }} Lvl{{ player.level }}</h3>
 			<div class="container-inline" style="padding-bottom: 10px">\
 				<div class="row">\
 					<div class="col">\

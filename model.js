@@ -32,7 +32,7 @@ class Item {
 
 
 class Perso {
-  constructor(name, level) {
+  constructor(name, level, gold) {
     this.name = name;
     this.level = level;
     this.slots = [
@@ -44,44 +44,49 @@ class Perso {
     ];
     this.boughtItems = []; // list of item bought but not yet assigned
     this.health = 50*this.level; // the actual level of life
-    this.gold=500;
+    this.gold=gold;
 
     this.vitaliy = this.level*50;
     this.armor = 10;
     this.strength = this.level*20;
-    //this.updateCaracs();
+    this.updateCaracs();
   }
 
-  /*updateCaracs() {
+  updateCaracs() {
     this.vitaliy = this.level*50;
     this.armor = 0;
     this.strength = this.level*20;
+
     for(let i=0;i<this.slots.length;i++) {
-      let slot = this.slots[i];
-      for(let j=0;j<slot.items.length;j++) {
-        let item = slot.items[j];
-        // search for armor effects
-        if (item.effect[0] == 'A') {
-          let val = item.effect.substring(2,item.effect.length);
-          if (item.effect[1] == '+') this.armor += eval(val);
-          else if (item.effect[1] == '-') this.armor -= eval(val);
-        }
-        // search for vitality effects
-        if (item.effect[0] == 'L') {
-          let val = item.effect.substring(2,item.effect.length);
-          if (item.effect[1] == '+') this.vitality += eval(val);
-          else if (item.effect[1] == '-') this.vitality -= eval(val);
-        }
-        // search for strength effects
-        if (item.effect[0] == 'S') {
-          let val = item.effect.substring(2,item.effect.length);
-          if (item.effect[1] == '+') this.strength += eval(val);
-          else if (item.effect[1] == '-') this.strength -= eval(val);
-        }
+      for(let j=0;j<this.slots[i].items.length;j++) {
+          let item = this.slots[i].items[j];
+          if(item != null) {
+
+            // search for arrmor
+            if (item.effect[0] == 'A') {
+              let val = item.effect.substring(2,item.effect.length);
+              if (item.effect[1] == '+') this.armor += eval(val);
+              else if (item.effect[1] == '-') this.armor -= eval(val);
+            }
+            // search for vitality effects
+            if (item.effect[0] == 'L') {
+              let val = item.effect.substring(2,item.effect.length);
+              if (item.effect[1] == '+') this.vitality += eval(val);
+              else if (item.effect[1] == '-') this.vitality -= eval(val);
+            }
+            // search for strength effects
+            if (item.effect[0] == 'S') {
+              let val = item.effect.substring(2,item.effect.length);
+              if (item.effect[1] == '+') this.strength += eval(val);
+              else if (item.effect[1] == '-') this.strength -= eval(val);
+            }
+
+          }
       }
     }
+
     if (this.life > this.vitality) this.life = this.vitality;
-  }*/
+  }
 
   /* modified version for TP 4:
        - called from buy() in vue instance, where checks/confirmation are done.
@@ -97,6 +102,7 @@ class Perso {
           }
         }
         this.gold -= item.price;
+        this.updateCaracs();
         return true;
       }
     }
@@ -121,7 +127,6 @@ class Perso {
 
 var boutiques = [
   {name:"SuperU", items: [
-    	new Item(0, 'helmet'           , 'helmet' , 200  , 'A+10', "assets/helmet.png"),
     	new Item(0, 'broigne'          , 'armor'  , 200  , 'A+10', "assets/broigne.png"),
     	new Item(0, 'hauberk'          , 'armor'  , 500  , 'A+10', "assets/hauberk.png"),
     	new Item(0, 'dagger'           , 'weapon' , 100  , 'A+10', "assets/dagger.png"),
@@ -142,8 +147,8 @@ var boutiques = [
 ];
 
 var personnages = [
-  new Perso("AZERTY",100),
-  new Perso("QWERTY",56),
+  new Perso("AZERTY", 100, 500),
+  new Perso("QWERTY", 56, 500),
 ];
 /*
 var personnages = [

@@ -17,16 +17,12 @@
   	<script src="components-shop-items.js"></script>
   	<script src="components-shop.js"></script>
   	<script src="components-player.js"></script>
+    <script src="components-gameMaster.js"></script>
+    <script src="components-cheatmode.js"></script>
   </head>
   <body>
-    <div class="background"></div>
     <div id="mydiv">
-  		<!--
-      <players :player-list="personnages" @newdata="handleData($event)"></players>
-    	<my-shop title="Shop proposes:" :item-list="items"></my-shop>
-    -->
-    	<game title="The best game ever:" :boutiques-list="boutiques" :player-list="personnages" :game-master="gameMaster"></game>
-
+    	<game title="The best game ever:" :boutiques-list="boutiques" :player-list="personnages" :item-cats="itemCats"></game>
   	</div>
   	<script src="index.js"></script>
     <script>
