@@ -12,7 +12,12 @@ Vue.component("game", {
 				<label for="gameMasterCheckbox">Game Master Mode</label>
 			</div>
 			<div v-if="gameMaster"> \
-				
+				<form @submit="newItem">
+					<p>
+						<label for="itemName">Name: </label>
+						<input type="text" id="itemName" v-model="itemName" name="itemName">
+					</p>
+				</form>
 			</div> \
 			<div v-if="gameMaster == false"> \
 				<players :player-list="playerList"></players> \
