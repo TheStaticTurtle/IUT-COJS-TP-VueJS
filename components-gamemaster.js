@@ -52,7 +52,7 @@ Vue.component("gameMaster", {
   		</div>
 
       <div style="border: solid; text-align: center">\
-  			<h2>New Player</h2>
+  			<h2>New Player</h2> 
         <p>
           <label for="playerName">Name: </label>
           <input type="text" id="playerName" v-model="playerName" name="playerName" required>

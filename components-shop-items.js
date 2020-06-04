@@ -1,20 +1,21 @@
 Vue.component("shopItems", {
-	props: [ 'itemList' ],
+	props: [ 'shop' ],
 	template: `
 	<div>\
 		<ol> \
-			<li v-for="(it,index) in itemList" >{{it.name}} <button v-on:click="buy(index)">{{it.price}} gp</button></li> \
+			<li v-for="(it,index) in shop.items" >{{it.name}} <button v-on:click="buy(it)">{{it.price}} gp</button></li> \
 		</ol> \
 	</div>
 	`,
 	methods: {
-		buy : function(id) {
+		buy : function(item) {
 			//personnages[0].items.push(items[id])
-			//this.$emit('items-bought',id); // send an event to parent.
 			//console.log(this.$parent.$parent);
-			items = this.$parent.$parent.$children[1].boutique.items;
-			if(this.$parent.$parent.$children[0].player.buy(items[id])) {
-				items.splice(id,1);
+
+			//selected_street = this.$parent.$parent.selected_street;
+			//shopid = this.$parent.$parent.$children[1].selected;
+			if(this.$parent.$parent.$children[0].persos[this.$parent.$parent.$children[0].selected].buy(item)) {
+				this.$props.shop.items.splice(this.$props.shop.items.indexOf(item),1);
 			}
 		}
 	}

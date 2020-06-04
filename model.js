@@ -23,7 +23,7 @@ class Item {
   constructor(id, name, type, price, effect,img) {
     this.id = id;
     this.name = name;
-    this.img = img;
+    this.img = "assets/"+type+".png";
     this.type = type;
     this.price = price;
     this.effect = effect;
@@ -32,7 +32,7 @@ class Item {
 
 
 class Perso {
-  constructor(name, level, gold) {
+  constructor(name, level, gold, life, strength, armor) {
     this.name = name;
     this.level = level;
     this.slots = [
@@ -43,12 +43,12 @@ class Perso {
       {name:'bag', items:[null,null,null,null,null,null,null,null,null,null]}
     ];
     this.boughtItems = []; // list of item bought but not yet assigned
-    this.health = 50*this.level; // the actual level of life
-    this.gold=gold;
+    this.health = life; // the actual level of life
+    this.gold= gold;
 
     this.vitaliy = this.level*50;
-    this.armor = 10;
-    this.strength = this.level*20;
+    this.armor = armor;
+    this.strength = strength;
     this.updateCaracs();
   }
 
@@ -125,31 +125,54 @@ class Perso {
   }
 }
 
-var boutiques = [
-  {name:"SuperU", items: [
-    	new Item(0, 'broigne'          , 'armor'  , 200  , 'A+10', "assets/broigne.png"),
-    	new Item(0, 'hauberk'          , 'armor'  , 500  , 'A+10', "assets/hauberk.png"),
-    	new Item(0, 'dagger'           , 'weapon' , 100  , 'A+10', "assets/dagger.png"),
-    	new Item(0, 'long sword'       , 'weapon' , 300  , 'A+10', "assets/lsword.png"),
-    	new Item(0, 'torch'            , 'lighter', 2    , 'A+10', "assets/torch.png"),
-    	new Item(0, 'protection potion', 'potion' , 100  , 'A+10', "assets/potion_protection.png"),
-    	new Item(0, 'fireball'         , 'spell'  , 1000 , 'A+10', "assets/fireball.png"),
-    	new Item(0, 'invisibility'     , 'spell'  , 1000 , 'A+10', "assets/invisibility.png"),
-    	new Item(0, 'apple'            , 'food'   , 1    , 'A+10', "assets/apple.png"),
-    	new Item(0, 'beef'             , 'food'   , 5    , 'A+10', "assets/beef.png"),
-  ]},
-  {name:"Cora", items: [
-    	new Item(0, 'Potion magique'   , 'potion' , 350  , 'A+10', "assets/potion_magic.png"),
-  ]},
-  {name:"Aldi", items: [
-    	new Item(0, 'Elssas Cola'      , 'food'   , 200  , 'A+10', "assets/potion_magic.png"),
-  ]},
-];
+class Shop {
+  constructor(id,name,items) {
+    this.id = id;
+    this.name = name;
+    this.items = items;
+  }
+}
+
+class Street {
+  constructor(id,name,shops) {
+    this.id = id;
+    this.name = name;
+    this.shops = shops;
+  }
+}
+
+/*var streets = [
+  new Street(0,"Rue n°1", [
+    new Shop(0,"SuperU", [
+      	new Item(0, 'broigne'          , 'armor'  , 200  , 'A+10', "assets/broigne.png"),
+      	new Item(1, 'hauberk'          , 'armor'  , 500  , 'A+10', "assets/hauberk.png"),
+      	new Item(2, 'dagger'           , 'weapon' , 100  , 'A+10', "assets/dagger.png"),
+      	new Item(3, 'long sword'       , 'weapon' , 300  , 'A+10', "assets/lsword.png"),
+      	new Item(4, 'torch'            , 'lighter', 2    , 'A+10', "assets/torch.png"),
+      	new Item(5, 'protection potion', 'potion' , 100  , 'A+10', "assets/potion_protection.png"),
+      	new Item(6, 'fireball'         , 'spell'  , 1000 , 'A+10', "assets/fireball.png"),
+      	new Item(7, 'invisibility'     , 'spell'  , 1000 , 'A+10', "assets/invisibility.png"),
+      	new Item(8, 'apple'            , 'food'   , 1    , 'A+10', "assets/apple.png"),
+      	new Item(9, 'beef'             , 'food'   , 5    , 'A+10', "assets/beef.png"),
+    ]),
+    new Shop(1,"Cora", [
+      	new Item(10, 'Potion magique'   , 'potion' , 350  , 'A+10', "assets/potion_magic.png"),
+    ])
+  ]),
+  new Street(1,"Rue n°2", [
+    new Shop(2,"Aldi", [
+      	new Item(11, 'Elssas Cola'      , 'potion' , 200  , 'A+10', "assets/potion_magic.png"),
+    ])
+  ])
+]*/
 
 var personnages = [
   new Perso("AZERTY", 100, 500),
   new Perso("QWERTY", 56, 500),
 ];
+
+var url = 'http://78d1f862450d.ngrok.io/rpg/'; //Sans VPN
+
 /*
 var personnages = [
   {

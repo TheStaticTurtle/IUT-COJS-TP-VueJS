@@ -44,13 +44,13 @@ Vue.component("cheatMode", {
 	`,
   methods: {
     changeLVL: function(step) {
-      this.$parent.$children[0].player.level += step
+      this.$parent.$children[0].persos[this.$parent.$children[0].selected].level += step
     },
     changeHP: function(step) {
-      this.$parent.$children[0].player.health += step
+      this.$parent.$children[0].persos[this.$parent.$children[0].selected].health += step
     },
     changeGD: function(step) {
-      this.$parent.$children[0].player.gold += step
+      this.$parent.$children[0].persos[this.$parent.$children[0].selected].gold += step
     }
   }
 });
