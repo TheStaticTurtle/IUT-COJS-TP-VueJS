@@ -171,7 +171,8 @@ var personnages = [
   new Perso("QWERTY", 56, 500),
 ];
 
-var url = 'http://78d1f862450d.ngrok.io/rpg/'; //Sans VPN
+//var url = 'http://78d1f862450d.ngrok.io/rpg/'; //Sans VPN
+var url = 'http://rpg.dut-info.cf/rpg/';
 
 /*
 var personnages = [

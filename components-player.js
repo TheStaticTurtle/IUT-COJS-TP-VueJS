@@ -1,23 +1,19 @@
 /*
+<div :style="{position: 'absolute', left:'calc((100% - (64px * ' + persos[selected].items.length + ')) / 2)', right:'calc((100% - (64px * ' + persos[selected].items.length + ')) / 2)'}"> \
+	<table class="table table-bordered" style="border: 3px solid #292b2c"> \
+		<tr> \
+			<th class="p-0 playerinventory" scope="col" v-for="(it,index) in persos[selected].items"> \
+				<div class="h-100" v-if="it != null"> \
+					<a data-toggle="tooltip" v-bind:title="it.name" > \
+						<img style="padding-top: 8px;padding-left: 8px;" class="h-75" v-bind:src="it.img"></img> \
+					</a> \
+				</div>\
+			</th> \
+		</tr> \
+	</table> \
+</div> \
+*/
 
-
-			<div :style="{position: 'absolute', left:'calc((100% - (64px * ' + persos[selected].items.length + ')) / 2)', right:'calc((100% - (64px * ' + persos[selected].items.length + ')) / 2)'}"> \
-		 	 <table class="table table-bordered" style="border: 3px solid #292b2c"> \
-		 		 <tr> \
-		 			 <th class="p-0 playerinventory" scope="col" v-for="(it,index) in persos[selected].items"> \
-		 				 <div class="h-100" v-if="it != null"> \
-		 					 <a data-toggle="tooltip" v-bind:title="it.name" > \
-		 						 <img style="padding-top: 8px;padding-left: 8px;" class="h-75" v-bind:src="it.img"></img> \
-		 					 </a> \
-		 				 </div>\
-		 			 </th> \
-		 		 </tr> \
-		 	 </table> \
-		  </div> \
-
-
-
-			*/
 Vue.component("players", {
 	data: function() {
 		return {
@@ -151,27 +147,27 @@ Vue.component("players", {
 		</div> \
 	</div> \
 	`,
-  methods: {
-    handleData: function(e) {
-      alert(e)
-    },
+	methods: {
+		handleData: function(e) {
+			alert(e)
+		},
 		forceRerender() {
-        this.renderComponent = false;
-        this.$nextTick(() => {
-          this.renderComponent = true;
-      });
-    },
+			this.renderComponent = false;
+			this.$nextTick(() => {
+				this.renderComponent = true;
+			});
+		},
 		dragStart(slot, index) {
-      //console.log("start dragging "+this.persos[selected].slots[slot].items[index].name);
-      this.idDrag = index;
+			//console.log("start dragging "+this.persos[selected].slots[slot].items[index].name);
+			this.idDrag = index;
 			this.idDragSlot = slot;
-    },
-    dragEnd() {
-      //console.log("stop dragging");
-      this.idDrag = -1;
-    },
+		},
+		dragEnd() {
+			//console.log("stop dragging");
+			this.idDrag = -1;
+		},
 		drop(slot, id) {
-	    //console.log(this.persos[selected].slots[this.idDragSlot].items[this.idDrag].name + " from " + this.persos[selected].slots[this.idDragSlot].name + " dropped on " + this.persos[selected].slots[slot].name);
+			//console.log(this.persos[selected].slots[this.idDragSlot].items[this.idDrag].name + " from " + this.persos[selected].slots[this.idDragSlot].name + " dropped on " + this.persos[selected].slots[slot].name);
 			if (this.persos[this.selected].canDropTo(slot, id, this.persos[this.selected].slots[this.idDragSlot].items[this.idDrag])) {
 				for (var i = id; i < this.persos[this.selected].slots[slot].items.length; i++) {
 					if(this.persos[this.selected].slots[slot].items[i] == null) {
@@ -185,10 +181,10 @@ Vue.component("players", {
 			}
 			this.forceRerender()
 		}
-  },
+	},
 	watch:{
 		selected : function(newVal, oldVal) {
-      //this.persos[selected] = persos[newVal];
+		//this.persos[selected] = persos[newVal];
 		}
 	},
 	mounted() {

@@ -20,7 +20,7 @@ Vue.component("game", {
 				</div>
 			</div>
 			<div v-if="gameMaster"> \
-				<gameMaster></gameMaster>
+				<gameMaster :streets="streets"></gameMaster>
 			</div> \
 			<div v-if="cheatMode && gameMaster == false" style="position: absolute; left:0px; bottom:0px;"> \
 				<cheatMode></cheatMode>
